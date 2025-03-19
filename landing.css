@@ -1,0 +1,621 @@
+/* فایل landing.css - استایل‌های صفحه لندینگ با مدل‌های زبانی - بهبود طراحی */
+
+:root {
+    --intro-bg: #f8fafc; /* کمی روشن‌تر */
+    --intro-text-color: var(--text-dark);
+    --models-section-bg: #edf2f7; /* کمی روشن‌تر و ملایم‌تر */
+    --model-card-bg: var(--gray-100);
+    --model-card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08); /* سایه ظریف‌تر */
+    --model-card-border-radius: 16px; /* گوشه‌های گردتر برای کارت‌ها */
+    --model-image-max-height: 160px; /* کمی بزرگتر */
+    --model-chat-btn-bg: var(--primary);
+    --model-chat-btn-text-color: var(--text-light);
+    --about-section-bg: #f8fafc; /* هماهنگ با intro */
+    --about-text-color: var(--text-dark);
+    --section-padding-desktop: 100px 0; /* پدینگ بیشتر برای دسکتاپ */
+    --section-padding-mobile: 60px 0; /* پدینگ کمتر برای موبایل */
+    --header-bg-gradient: linear-gradient(to right, #ffffff, #f2f2f2); /* گرادیان ملایم برای هدر */
+  }
+  
+  .dark-theme :root {
+    --intro-bg: var(--bg-dark);
+    --intro-text-color: var(--text-light);
+    --models-section-bg: #2d3748; /* رنگ تیره‌تر برای تم تیره */
+    --model-card-bg: #374151; /* کارت‌های تیره‌تر در تم تیره */
+    --model-card-shadow: none; /* حذف سایه در تم تیره */
+    --about-section-bg: var(--bg-dark);
+    --about-text-color: var(--text-light);
+    --header-bg-gradient: linear-gradient(to right, #1a202c, #2d3748); /* گرادیان تیره برای هدر در تم تیره */
+  }
+  
+  
+  body {
+    font-family: 'Vazirmatn', sans-serif;
+    background-color: var(--intro-bg); /* پیش‌فرض */
+    color: var(--intro-text-color); /* پیش‌فرض */
+    margin: 0;
+    direction: rtl;
+    overflow-x: hidden; /* برای جلوگیری از اسکرول افقی احتمالی */
+  }
+  
+  
+  .landing-header {
+    background: var(--header-bg-gradient); /* استفاده از گرادیان برای هدر */
+    padding: 20px 0;
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .dark-theme .landing-header {
+    background: var(--header-bg-gradient); /* گرادیان تیره برای تم تیره */
+    box-shadow: none;
+    border-bottom: 1px solid var(--gray-800);
+  }
+  
+  
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .landing-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  
+  .landing-header .logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.6rem; /* کمی بزرگتر */
+    font-weight: 700; /* ضخیم‌تر */
+    color: var(--primary);
+    transition: transform var(--transition-fast); /* انیمیشن ظریف */
+  }
+  .landing-header .logo:hover {
+      transform: scale(1.05);
+  }
+  
+  .landing-header .logo i {
+    margin-left: 10px;
+    font-size: 2rem; /* بزرگتر */
+  }
+  
+  .landing-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  
+  .landing-nav li {
+    margin-right: 25px; /* فاصله بیشتر */
+  }
+  
+  .landing-nav li:last-child {
+    margin-right: 0;
+  }
+  
+  .landing-nav a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: color var(--transition-fast), transform var(--transition-fast); /* انیمیشن ظریف */
+    padding: 8px 12px; /* کمی پدینگ برای دکمه‌ای‌تر شدن */
+    border-radius: var(--border-radius);
+  }
+  .landing-nav a:hover {
+    color: var(--primary);
+    background-color: var(--gray-200); /* پس‌زمینه هنگام هاور */
+      transform: scale(1.05);
+  }
+  .dark-theme .landing-nav a:hover {
+      background-color: var(--gray-800); /* پس‌زمینه تیره هنگام هاور در تم تیره */
+      color: var(--primary-light);
+  }
+  
+  
+  .dark-theme .landing-nav a {
+    color: var(--text-light);
+  }
+  
+  
+  /* Intro Section */
+  .intro-section {
+    padding: var(--section-padding-desktop); /* استفاده از متغیر پدینگ */
+    background-color: var(--intro-bg);
+    color: var(--intro-text-color);
+    text-align: center;
+      overflow: hidden; /* Clip path area */
+      position: relative; /* For pseudo-element positioning */
+  }
+  .intro-section::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 120px; /* Height of the angled cut-off */
+      background: var(--models-section-bg); /* Match next section background */
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0% calc(100% - 120px)); /* Angled cut */
+  }
+  
+  
+  .intro-section .container {
+    max-width: 850px; /* پهنای بیشتر */
+  }
+  
+  .intro-section h1 {
+    font-size: 3rem; /* بزرگتر */
+    margin-bottom: 25px; /* فاصله بیشتر */
+    font-family: 'Shabnam', sans-serif;
+    line-height: 1.3;
+    letter-spacing: -1px; /* فاصله حروف کمتر برای فونت Shabnam */
+      transition: color var(--transition-fast); /* انیمیشن تغییر رنگ */
+  }
+  .intro-section h1:hover {
+      color: var(--primary); /* تغییر رنگ عنوان هنگام هاور */
+  }
+  
+  
+  .intro-text {
+    font-size: 1.15rem; /* کمی بزرگتر */
+    line-height: 1.9; /* خطوط بازتر */
+    color: var(--gray-700);
+    max-width: 700px; /* محدود کردن پهنای متن برای خوانایی بهتر */
+    margin: 0 auto; /* وسط‌چین کردن متن */
+  }
+  .dark-theme .intro-text {
+    color: var(--gray-400);
+  }
+  
+  
+  /* Models Section */
+  .models-section {
+    padding: var(--section-padding-desktop); /* استفاده از متغیر پدینگ */
+    background-color: var(--models-section-bg);
+  }
+  
+  .models-section h2 {
+    font-size: 2.3rem; /* بزرگتر */
+    text-align: center;
+    margin-bottom: 60px; /* فاصله بیشتر */
+    font-family: 'Shabnam', sans-serif;
+      position: relative; /* For underline animation */
+      display: inline-block; /* Needed for inline pseudo-element */
+      padding-bottom: 0.5em; /* Space for underline */
+  }
+  .models-section h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 3px; /* Underline thickness */
+      background-color: var(--primary);
+      transform: scaleX(0); /* Initially hidden */
+      transform-origin: bottom right;
+      transition: transform 0.4s ease-out;
+  }
+  .models-section h2:hover::after {
+      transform: scaleX(1); /* Underline on hover */
+      transform-origin: bottom left;
+  }
+  
+  
+  .models-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* پهنای بیشتر کارت‌ها */
+    gap: 35px; /* فاصله بیشتر کارت‌ها */
+    padding: 0 30px; /* فاصله بیشتر از لبه‌ها */
+  }
+  
+  .model-card {
+    background-color: var(--model-card-bg);
+    border-radius: var(--model-card-border-radius);
+    box-shadow: var(--model-card-shadow);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* انیمیشن نرم‌تر */
+    cursor: pointer; /* نشانگر موس به شکل دست */
+  }
+  .dark-theme .model-card {
+    background-color: var(--gray-900);
+    box-shadow: none;
+    border: 1px solid var(--gray-800);
+  }
+  
+  
+  .model-card:hover {
+    transform: translateY(-8px); /* حرکت بیشتر هنگام هاور */
+    box-shadow: 0 8px 12px -2px rgba(0, 0, 0, 0.1); /* سایه بیشتر هنگام هاور */
+  }
+  .dark-theme .model-card:hover {
+      box-shadow: 0 8px 12px -2px rgba(255, 255, 255, 0.05); /* سایه روشن در تم تیره */
+  }
+  
+  
+  .model-card img {
+    width: 100%;
+    max-height: var(--model-image-max-height);
+    object-fit: cover;
+    border-bottom: 1px solid var(--gray-300);
+    transition: opacity 0.3s ease-in-out; /* انیمیشن محو شدن تصویر */
+  }
+  .dark-theme .model-card img {
+      border-bottom-color: var(--gray-800);
+  }
+  .model-card:hover img {
+      opacity: 0.9; /* کمی محو شدن تصویر هنگام هاور */
+  }
+  
+  
+  .model-card h3, .model-card .model-description, .model-card .btn-model-chat {
+    padding-right: 25px; /* پدینگ بیشتر */
+    padding-left: 25px;
+  }
+  
+  
+  .model-card h3 {
+    font-size: 1.4rem; /* بزرگتر */
+    margin-top: 25px; /* فاصله بیشتر */
+    margin-bottom: 15px; /* فاصله بیشتر */
+    font-family: 'Shabnam', sans-serif;
+    text-align: right;
+      transition: color var(--transition-fast); /* انیمیشن تغییر رنگ */
+  }
+  .model-card:hover h3 {
+      color: var(--primary-dark); /* تغییر رنگ عنوان مدل هنگام هاور */
+  }
+  
+  
+  .model-card .model-description {
+    font-size: 1.05rem; /* کمی بزرگتر */
+    color: var(--gray-600);
+    line-height: 1.7; /* خطوط بازتر */
+    margin-bottom: 25px; /* فاصله بیشتر */
+    text-align: right;
+  }
+  .dark-theme .model-card .model-description {
+    color: var(--gray-400);
+  }
+  
+  
+  .btn-model-chat {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--model-chat-btn-bg);
+    color: var(--model-chat-btn-text-color) !important;
+    padding: 12px 25px; /* پدینگ بیشتر */
+    border-radius: 24px; /* گوشه‌های گردتر */
+    text-decoration: none;
+    font-weight: 600; /* وزن فونت کمتر */
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out; /* انیمیشن نرم‌تر */
+    margin-top: auto;
+    margin-bottom: 30px; /* فاصله بیشتر */
+    align-self: flex-start;
+  }
+  
+  .btn-model-chat i {
+    margin-right: 10px;
+      font-size: 1.1rem; /* کمی بزرگتر */
+  }
+  
+  .btn-model-chat:hover {
+    background-color: var(--primary-dark);
+      transform: scale(1.03); /* بزرگنمایی ظریف هنگام هاور */
+  }
+  
+  
+  /* About Section */
+  .about-section {
+    padding: var(--section-padding-desktop); /* استفاده از متغیر پدینگ */
+    background-color: var(--about-section-bg);
+    color: var(--about-text-color);
+      position: relative; /* For pseudo-element positioning */
+      overflow: hidden; /* Clip path area */
+  }
+  .about-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 120px; /* Height of the angled cut-off */
+      background: var(--models-section-bg); /* Match previous section background */
+      clip-path: polygon(0 0, 100% 120px, 100% 0, 0% 0); /* Angled cut at the top */
+  }
+  
+  .about-section .container {
+    max-width: 800px;
+    text-align: center;
+  }
+  
+  .about-section h2 {
+    font-size: 2.3rem; /* بزرگتر */
+    margin-bottom: 35px; /* فاصله بیشتر */
+    font-family: 'Shabnam', sans-serif;
+      position: relative; /* For underline animation */
+      display: inline-block; /* Needed for inline pseudo-element */
+      padding-bottom: 0.5em; /* Space for underline */
+  }
+  .about-section h2::after {
+      content: '';
+      position: absolute;
+      left: 50%; /* Center underline */
+      right: 50%; /* Center underline */
+      bottom: 0;
+      height: 3px; /* Underline thickness */
+      background-color: var(--primary);
+      transform: scaleX(0); /* Initially hidden */
+      transform-origin: bottom center;
+      transition: transform 0.4s ease-out;
+  }
+  .about-section h2:hover::after {
+      transform: scaleX(1); /* Underline on hover */
+      transform-origin: bottom center;
+      left: 0; /* Full width on hover */
+      right: 0; /* Full width on hover */
+  }
+  
+  
+  .about-text {
+    font-size: 1.15rem; /* کمی بزرگتر */
+    line-height: 1.9; /* خطوط بازتر */
+    color: var(--gray-700);
+    max-width: 750px; /* پهنای محدودتر */
+    margin: 0 auto; /* وسط‌چین کردن */
+  }
+  .dark-theme .about-text {
+      color: var(--gray-400);
+  }
+  
+  
+  /* Contact Section and Footer - Styles from previous landing.css - adjusted padding */
+  .contact-section {
+    padding: var(--section-padding-desktop); /* استفاده از متغیر پدینگ */
+    background-color: var(--gray-200);
+  }
+  .dark-theme .contact-section {
+    background-color: var(--gray-800);
+  }
+  
+  .contact-section .container {
+      text-align: center;
+  }
+  
+  .contact-section h2 {
+    font-size: 2.3rem; /* بزرگتر */
+    text-align: center;
+    margin-bottom: 35px; /* فاصله بیشتر */
+    font-family: 'Shabnam', sans-serif;
+      position: relative; /* For underline animation */
+      display: inline-block; /* Needed for inline pseudo-element */
+      padding-bottom: 0.5em; /* Space for underline */
+  }
+  .contact-section h2::after {
+      content: '';
+      position: absolute;
+      left: 50%; /* Center underline */
+      right: 50%; /* Center underline */
+      bottom: 0;
+      height: 3px; /* Underline thickness */
+      background-color: var(--primary);
+      transform: scaleX(0); /* Initially hidden */
+      transform-origin: bottom center;
+      transition: transform 0.4s ease-out;
+  }
+  .contact-section h2:hover::after {
+      transform: scaleX(1); /* Underline on hover */
+      transform-origin: bottom center;
+      left: 0; /* Full width on hover */
+      right: 0; /* Full width on hover */
+  }
+  
+  
+  .contact-section p {
+    text-align: center;
+    color: var(--gray-600);
+    margin-bottom: 40px;
+      font-size: 1.05rem; /* کمی بزرگتر */
+  }
+  .dark-theme .contact-section p {
+    color: var(--gray-400);
+  }
+  
+  .contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 50px; /* فاصله بیشتر */
+    flex-wrap: wrap;
+  }
+  
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* فاصله بیشتر */
+    margin-bottom: 25px; /* فاصله بیشتر */
+    flex-direction: column;
+    text-align: center;
+      transition: transform var(--transition-fast); /* انیمیشن ظریف */
+  }
+  .contact-item:hover {
+      transform: scale(1.05); /* بزرگنمایی ظریف هنگام هاور */
+  }
+  
+  .contact-item i {
+    font-size: 1.7rem; /* بزرگتر */
+    color: var(--primary);
+    margin-bottom: 15px; /* فاصله بیشتر */
+  }
+  
+  .contact-item p {
+    margin: 0;
+      font-size: 1.05rem; /* کمی بزرگتر */
+  }
+  
+  .contact-item a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+  
+  .contact-item a:hover {
+    color: var(--primary-dark);
+  }
+  
+  /* Footer */
+  .landing-footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text-color);
+    text-align: center;
+    padding: 25px 0; /* پدینگ بیشتر */
+    font-size: 1rem; /* بزرگتر */
+  }
+  
+  .landing-footer p {
+    margin: 0;
+  }
+  
+  
+  /* Responsive adjustments - Adjusted paddings and font sizes */
+  @media (max-width: 768px) {
+    .container {
+      width: 95%;
+    }
+  
+    .landing-header .container,
+    .intro-section,
+    .about-section,
+    .contact-section {
+      text-align: center;
+        padding-top: var(--section-padding-mobile); /* استفاده از متغیر پدینگ موبایل */
+        padding-bottom: var(--section-padding-mobile); /* استفاده از متغیر پدینگ موبایل */
+    }
+      .landing-header .container {
+          flex-direction: column;
+      }
+  
+  
+    .landing-nav ul {
+      flex-direction: column;
+      text-align: center;
+      margin-top: 20px;
+    }
+  
+    .landing-nav li {
+      margin-right: 0;
+      margin-bottom: 15px;
+    }
+      .landing-nav a {
+          padding: 10px 15px; /* پدینگ بیشتر در موبایل */
+      }
+  
+  
+    .intro-section {
+        padding-top: var(--section-padding-mobile); /* استفاده از متغیر پدینگ موبایل */
+        padding-bottom: var(--section-padding-mobile); /* استفاده از متغیر پدینگ موبایل */
+    }
+      .intro-section h1 {
+          font-size: 2.4rem; /* کوچکتر در موبایل */
+          margin-bottom: 20px;
+      }
+      .intro-text {
+          font-size: 1rem; /* کوچکتر در موبایل */
+          line-height: 1.7;
+      }
+      .intro-section::after {
+          height: 80px; /* ارتفاع cut-off کمتر در موبایل */
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0% calc(100% - 80px)); /* Cut-off کمتر در موبایل */
+      }
+  
+  
+    .models-section {
+        padding-top: var(--section-padding-mobile); /* استفاده از متغیر پدینگ موبایل */
+        padding-bottom: var(--section-padding-mobile); /* استفاده از متغیر پدینگ موبایل */
+    }
+    .models-section h2,
+    .about-section h2,
+    .contact-section h2 {
+      font-size: 2rem; /* کوچکتر در موبایل */
+      margin-bottom: 40px;
+    }
+      .models-grid {
+          grid-template-columns: 1fr; /* Stack model cards on mobile */
+          gap: 25px; /* فاصله کمتر در موبایل */
+          padding: 0 15px; /* پدینگ کمتر در موبایل */
+      }
+      .model-card {
+          text-align: center;
+      }
+      .model-card h3, .model-card .model-description, .model-card .btn-model-chat {
+          padding-right: 15px; /* پدینگ کمتر در موبایل */
+          padding-left: 15px; /* پدینگ کمتر در موبایل */
+          text-align: center;
+      }
+      .model-card h3 {
+          font-size: 1.3rem; /* کوچکتر در موبایل */
+          margin-top: 20px;
+          margin-bottom: 10px;
+      }
+      .model-card .model-description {
+          font-size: 0.95rem; /* کوچکتر در موبایل */
+          margin-bottom: 20px;
+      }
+      .btn-model-chat {
+          align-self: center;
+          padding: 11px 22px; /* پدینگ کمتر در موبایل */
+          font-size: 0.95rem; /* کوچکتر در موبایل */
+      }
+          .btn-model-chat i {
+              margin-right: 8px;
+              font-size: 1rem; /* کوچکتر در موبایل */
+          }
+  
+      .about-section {
+          padding-top: var(--section-padding-mobile); /* استفاده از متغیر پدینگ موبایل */
+          padding-bottom: var(--section-padding-mobile); /* استفاده از متغیر پدینگ موبایل */
+      }
+      .about-section h2 {
+          margin-bottom: 30px;
+      }
+      .about-text {
+          font-size: 1rem; /* کوچکتر در موبایل */
+          line-height: 1.7;
+      }
+      .about-section::before {
+          height: 80px; /* ارتفاع cut-off کمتر در موبایل */
+          clip-path: polygon(0 0, 100% 80px, 100% 0, 0% 0); /* Cut-off کمتر در موبایل */
+      }
+  
+  
+    .contact-info {
+      flex-direction: column;
+      gap: 30px; /* فاصله کمتر در موبایل */
+    }
+      .contact-item {
+          margin-bottom: 20px;
+          gap: 15px; /* فاصله کمتر در موبایل */
+      }
+      .contact-item i {
+          font-size: 1.4rem; /* کوچکتر در موبایل */
+          margin-bottom: 10px;
+      }
+      .contact-item p, .contact-section p {
+          font-size: 0.95rem; /* کوچکتر در موبایل */
+      }
+  
+  
+    .landing-footer {
+        padding: 20px 0; /* پدینگ کمتر در موبایل */
+        font-size: 0.9rem; /* کوچکتر در موبایل */
+    }
+  
+  }

@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ravid AI - صفحه اصلی</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&family=Shabnam:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- هدر -->
+  <header class="header">
+    <div class="logo">
+      <i class="fas fa-robot"></i>
+      <span>Ravid AI</span>
+    </div>
+    <nav class="nav">
+      <a href="#">صفحه اصلی</a>
+      <a href="#">مدل‌ها</a>
+      <a href="#">درباره ما</a>
+      <a href="#">تماس</a>
+    </nav>
+    <!-- دکمه‌های ورود/ثبت‌نام حذف شده از هدر در صفحه اصلی -->
+  </header>
+
+  <!-- بخش معرفی کلی -->
+  <section class="hero">
+    <h1>گفتگو با آینده، همین حالا!</h1>
+    <p>با Ravid AI و مدل‌های زبانی پیشرفته، تجربه‌ای متفاوت از چت داشته باش. آماده‌ای؟</p>
+    <div class="hero-buttons">
+      <button class="cta-button">شروع کن</button>
+    </div>
+  </section>
+
+  <!-- بخش مدل‌های زبانی -->
+  <section class="models">
+    <h2>مدل‌های زبانی ما</h2>
+    <div class="model-cards">
+      <div class="model-card">
+        <img src="gemini2-thinking.png" alt="Gemini 2 Thinking">
+        <h3>Gemini 2 Flash Thinking</h3>
+        <p>یه مدل استدلالی  کامل از گوگل </p>
+        <button class="chat-button" onclick="window.location.href='/chat?model=gemini2thinking'">
+          <i class="fas fa-comment-dots"></i> گپ زدن
+        </button>
+      </div>
+      <div class="model-card">
+        <img src="gemini2-pro.png" alt="Gemini 2 Thinking">
+
+        <h3>Gemini 2 Pro</h3>
+        <p>حرفه‌ای برای کارهای تجاری و تخصصی.</p>
+        <button class="chat-button" onclick="window.location.href='/chat?model=gemini2pro'">
+          <i class="fas fa-comment-dots"></i> گپ زدن
+        </button>
+      </div>
+      <div class="model-card">
+        <img src="gemini-2-0-Flash.png" alt="Gemini 2 Thinking">
+        <h3>Gemini 2 Flash</h3>
+        <p>سریع و چابک برای چت‌های روزمره.</p>
+        <button class="chat-button" onclick="window.location.href='/chat?model=gemini2flash'">
+          <i class="fas fa-comment-dots"></i> گپ زدن
+        </button>
+      </div>
+      <div class="model-card">
+        <img src="Qwen2.5.png" alt="Gemini 2 Thinking">
+        <h3>Qwen 2.5</h3>
+        <p>هوشمند و خلاق برای هر سوالی.</p>
+        <button class="chat-button" onclick="window.location.href='/chat?model=qwen2.5'">
+          <i class="fas fa-comment-dots"></i> گپ زدن
+        </button>
+      </div>
+      <div class="model-card">
+        <img src="qwen-qwq.png" alt="Qwen QWQ">
+        <h3>Qwen QWQ</h3>
+        <p>دوست‌داشتنی و بامزه برای چت‌های fun.</p>
+        <button class="chat-button" onclick="window.location.href='/chat?model=qwenqwq'">
+          <i class="fas fa-comment-dots"></i> گپ زدن
+        </button>
+      </div>
+      <div class="model-card">
+        <img src="llama-3.3-70b.png" alt="Llama 3.3 70B">
+        <h3>Llama 3.3 70B</h3>
+        <p>قدرتمند برای کارهای سنگین.</p>
+        <button class="chat-button" onclick="window.location.href='/chat?model=llama-3.3-70b'">
+          <i class="fas fa-comment-dots"></i> گپ زدن
+        </button>
+      </div>
+      <div class="model-card">
+        <img src="llama-3.1-8b.png" alt="Llama 3.1 8B">
+        <h3>Llama 3.1 8B</h3>
+        <p>سبک و سریع برای چت‌های ساده.</p>
+        <button class="chat-button" onclick="window.location.href='/chat?model=llama-3.1-8b'">
+          <i class="fas fa-comment-dots"></i> گپ زدن
+        </button>
+      </div>
+      <div class="model-card">
+        <img src="deepseek-r1.png" alt="Deepseek R1">
+        <h3>Deepseek R1</h3>
+        <p>جستجوگر عمیق برای جواب‌های خاص.</p>
+        <button class="chat-button" onclick="window.location.href='/chat?model=deepseekr1'">
+          <i class="fas fa-comment-dots"></i> گپ زدن
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- فوتر -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="#">صفحه اصلی</a>
+      <a href="#">مدل‌ها</a>
+      <a href="#">درباره ما</a>
+      <a href="#">تماس</a>
+    </div>
+    <div class="contact-info">
+      <p>ایمیل: info@ravidai.com</p>
+      <p>تلفن: 021-12345678</p>
+    </div>
+    <p class="copyright">© 2023 Ravid AI. همه حقوق محفوظه.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
